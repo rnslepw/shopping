@@ -1,3 +1,4 @@
+import App from "../App";
 import Home from "../components/Home";
 import Shop from "../components/Shop";
 import Error from "../components/Error";
@@ -5,12 +6,18 @@ import Error from "../components/Error";
 const routes = [
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
     errorElement: <Error />,
-  },
-  {
-    path: "shop",
-    element: <Shop />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "shop",
+        element: <Shop />,
+      },
+    ],
   },
 ];
 
