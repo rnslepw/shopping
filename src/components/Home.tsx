@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+import Nav from "./Nav";
+
 const Home = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ["productsData"],
@@ -13,9 +15,14 @@ const Home = () => {
 
   return (
     <>
-      <h1 className="text-red-500">Home</h1>
-      <h2>{data[0].title}</h2>
-      <Link to={"shop"}>Shop</Link>
+      <Nav />
+      <main className="bg-teal-500 flex-1 flex flex-col gap-8 justify-center items-center">
+        <h1 className="text-red-500 text-7xl uppercase">Home</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <button className="py-2 px-4 bg-slate-500 hover:bg-slate-400 rounded-lg">
+          <Link to={"shop"}>Shop</Link>
+        </button>
+      </main>
     </>
   );
 };
