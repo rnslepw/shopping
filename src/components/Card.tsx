@@ -3,7 +3,7 @@ import { Product } from "../utils/types";
 
 interface PropType {
   product: Product;
-  handleAddToCart: (num: number) => void;
+  handleAddToCart: (item: number, price: number) => void;
 }
 
 const Card = ({ product, handleAddToCart }: PropType) => {
@@ -30,14 +30,14 @@ const Card = ({ product, handleAddToCart }: PropType) => {
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-4">
           <button
-            className="py-2 px-6 bg-slate-900 text-white rounded-full"
+            className="py-2 px-6 bg-slate-700 text-slate-50 rounded-full"
             onClick={handleSubtract}
           >
             -
           </button>
           <span className="text-xl">{quantity}</span>
           <button
-            className="py-2 px-6 bg-slate-900 text-white rounded-full"
+            className="py-2 px-6 bg-slate-700 text-slate-50 rounded-full"
             onClick={handleAdd}
           >
             +
@@ -46,7 +46,7 @@ const Card = ({ product, handleAddToCart }: PropType) => {
         <button
           className="bg-teal-700 hover:bg-teal-900 text-teal-50 py-2 px-4 rounded-lg"
           onClick={() => {
-            handleAddToCart(quantity);
+            handleAddToCart(quantity, product.price * quantity);
             setQuantity(1);
           }}
         >

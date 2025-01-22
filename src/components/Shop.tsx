@@ -4,7 +4,8 @@ import { Product } from "../utils/types";
 import { useOutletContext } from "react-router-dom";
 
 const Shop = () => {
-  const handleAddToCart = useOutletContext<(num: number) => void>();
+  const handleAddToCart =
+    useOutletContext<(item: number, price: number) => void>();
 
   const { isPending, error, data } = useQuery({
     queryKey: ["productsData"],

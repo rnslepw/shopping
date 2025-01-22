@@ -3,11 +3,16 @@ import { Outlet } from "react-router-dom";
 import Nav from "./components/Nav";
 
 const App = () => {
-  const [cart, setCart] = useState(0);
+  const [cart, setCart] = useState({
+    items: 0,
+    price: 0,
+  });
 
-  const handleAddToCart = (num: number) => {
-    const newCart = cart + num;
-    setCart(newCart);
+  const handleAddToCart = (item: number, price: number) => {
+    setCart({
+      items: cart.items + item,
+      price: cart.price + price,
+    });
   };
 
   return (
